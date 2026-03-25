@@ -5,4 +5,9 @@ pip install "python-jose[cryptography]"
 
 openssl rand -hex 32
 
+
+### for postgressql
 pip install psycopg2-binary
+
+### for mysql
+pip install pymysql
