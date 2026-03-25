@@ -4,3 +4,5 @@ pip install python-multipart
 pip install "python-jose[cryptography]"
 
 openssl rand -hex 32
+
+pip install psycopg2-binary
