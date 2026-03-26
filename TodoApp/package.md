@@ -11,3 +11,7 @@ pip install psycopg2-binary
 
 ### for mysql
 pip install pymysql
+
+pip install alembic
+
+alembic init alembic
