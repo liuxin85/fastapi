@@ -68,6 +68,7 @@ class CreateUserRequest(BaseModel):
     last_name: str
     password: str
     role: str
+    phone_number: str
 
 class Token(BaseModel):
     access_token: str
@@ -82,7 +83,8 @@ async def create_user(db: db_dependency, create_user_request: CreateUserRequest)
         last_name = create_user_request.last_name,
         role = create_user_request.role,
         hashed_password = bcrypt_context.hash(create_user_request.password),
-        is_active = True
+        is_active = True,
+        phone_number = create_user_request.phone_number
     )
     db.add(create_user_model)
     db.commit()
@@ -100,3 +102,5 @@ async def login_for_access_token(form_data: Annotated[OAuth2PasswordRequestForm,
 
 
     return {'access_token': token, 'token_type': 'bearer'}
+
+
