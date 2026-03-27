@@ -5,8 +5,7 @@ from sqlalchemy.orm import Session
 from ..models import Todos
 from .auth import get_current_user
 
-
-router = APIRouter(prefix="/amdin", tags=['amdin'])
+router = APIRouter(prefix="/admin", tags=['amdin'])
 
 
 def get_db():
