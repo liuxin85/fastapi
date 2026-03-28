@@ -15,3 +15,5 @@ pip install pymysql
 pip install alembic
 
 alembic init alembic
+
+pip install pytest-asyncio
