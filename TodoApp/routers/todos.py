@@ -1,4 +1,5 @@
-from fastapi import APIRouter, Depends, HTTPException, status, Path
+from fastapi import APIRouter, Depends, HTTPException, status, Path, Request
+from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel, Field
 from ..database import SessionLocal
 from typing import Annotated
@@ -8,6 +9,7 @@ from .auth import get_current_user
 
 
 router = APIRouter(prefix="/todos", tags=['todos'])
+templates = Jinja2Templates(directory="TodoApp/templates")
 
 
 def get_db():
@@ -27,6 +29,11 @@ class TodoRequest(BaseModel):
     description: str = Field(min_length=3, max_length=100)
     priority: int = Field(gt=0, lt=6)
     complete: bool
+
+
+@router.get("/todo-page")
+async def render_todo_page(request: Request):
+    return templates.TemplateResponse("todo.html", {"request": request})
 
 
 @router.get("/",status_code=status.HTTP_200_OK)

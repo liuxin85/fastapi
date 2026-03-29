@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container mt-4" id="todoPage">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="mb-0">My Todos</h2>
+    <button type="button" class="btn btn-outline-secondary" id="logoutBtn">Logout</button>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-header">Create Todo</div>
+    <div class="card-body">
+      <form id="todoForm">
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" class="form-control" name="title" required minlength="3" />
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <input type="text" class="form-control" name="description" required minlength="3" maxlength="100" />
+        </div>
+        <div class="form-group">
+          <label>Priority (1-5)</label>
+          <input type="number" class="form-control" name="priority" min="1" max="5" value="3" required />
+        </div>
+        <div class="form-check mb-3">
+          <input type="checkbox" class="form-check-input" id="todoComplete" name="complete" />
+          <label class="form-check-label" for="todoComplete">Completed</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Todo</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">Todo List</div>
+    <div class="card-body text-muted small">
+      Tip: Use `Toggle` to switch complete status and `Edit` to update title/description/priority.
+    </div>
+    <ul class="list-group list-group-flush" id="todoList"></ul>
+  </div>
+</div>
+{% endblock %}

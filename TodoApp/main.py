@@ -16,6 +16,7 @@ app.mount('/static', StaticFiles(directory="TodoApp/static"), name='static')
 def test(request: Request):
     return templates.TemplateResponse("home.html", {"request": request})
 
+
 @app.get('/healthy')
 def health_check():
     return {'status': 'Healthy'}
